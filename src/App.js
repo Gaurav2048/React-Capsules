@@ -14,6 +14,13 @@ function App() {
     'Firebase',
   ]);
 
+  const onItemAdded = (item) => {
+    console.log(item);
+    const copyItems = JSON.parse(JSON.stringify(items));
+    copyItems.push(item);
+    setItems(copyItems);
+  };
+
   return (
     <div className="App">
       <ReactBulletDnd
@@ -44,6 +51,7 @@ function App() {
         ))}
         <ReactBulletDnd.TextInput
           style={{ width: '90%', marginLeft: '15px' }}
+          addItem={onItemAdded}
         />
       </ReactBulletDnd>
     </div>

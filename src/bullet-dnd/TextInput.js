@@ -1,6 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const TextInput = ({ style }) => {
+const TextInput = ({ style, addItem }) => {
+  const [newItem, setNewItem] = useState('');
+  const keyDownHandler = (e) => {
+    console.log(newItem);
+    if (e.keyCode === 13 && typeof addItem === 'function') {
+      addItem(newItem);
+      setNewItem('');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keypress', keyDownHandler);
+  });
+
+  const onTextChange = (e) => {
+    setNewItem(e.target.value);
+  };
+
   return (
     <div style={style}>
       <input
@@ -12,6 +29,8 @@ const TextInput = ({ style }) => {
           marginTop: '8px',
           marginBottom: '8px',
         }}
+        value={newItem}
+        onChange={onTextChange}
       />
     </div>
   );
