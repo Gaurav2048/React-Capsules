@@ -22,32 +22,33 @@ const ReactBulletDnd = ({ children, style, data, set }) => {
     draggEnterIndex.current = index;
     const ItemCopy = JSON.parse(JSON.stringify(data));
     ItemCopy.splice(draggingItemIndex.current, 1);
-    console.log(ItemCopy);
-    if (draggingItemIndex.current < index) {
-      ItemCopy.splice(index - 1, 0, draggingItem.current);
-    } else {
-      ItemCopy.splice(index, 0, draggingItem.current);
-    }
-    console.log(ItemCopy);
+    ItemCopy.splice(index, 0, draggingItem.current);
+    draggingItemIndex.current = index;
     set(ItemCopy);
-    console.log(index);
   };
 
   const onDragEnd = (e, index) => {
     draggingItem.current = null;
     draggingItemIndex.current = null;
+    draggEnterIndex.current = null;
   };
 
   return (
     <div style={{ ...style }}>
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         {React.Children.map(children, (child) => {
-          return React.cloneElement(child, {
-            onClick,
-            onDragEnter,
-            onDragStart,
-            onDragEnd,
-          });
+          if (child.type.name !== 'TextInput') {
+            return React.cloneElement(child, {
+              onClick,
+              onDragEnter,
+              onDragStart,
+              onDragEnd,
+            });
+          } else {
+            return React.cloneElement(child, {
+              addItem: child.props.addItem,
+            });
+          }
         })}
       </div>
     </div>
