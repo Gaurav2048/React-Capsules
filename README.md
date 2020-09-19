@@ -12,7 +12,7 @@ Main Components
 
  **Style every component as your requirement by passing a style prop to each of them.** 
 
- **To have drag and drop feature pass the data to ReactBulletDnd component and a position prop to ReactBulletDnd.Item. This should be the index of the array.**
+ **To have drag and drop feature pass the data to ReactBulletDnd component in a data prop and a position prop to ReactBulletDnd.Item. This should be the index of the array.**
 
  **pass a function to addItem prop to handle enter key pressed event in ReactBulletDnd.TextInput component.** 
 
