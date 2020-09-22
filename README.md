@@ -1,7 +1,7 @@
 # React-Capsules
 A plug &amp; play api for bullet lists in React. 
 
-## React-capsules is now a library. Visit  [this](https://github.com/Gaurav2048/React-capsules-library)  page to know more. 
+## React-capsules is now on npm. Visit  [this](https://github.com/Gaurav2048/React-capsules-library)  page to know more. 
 
 ![](demo.gif)
 
